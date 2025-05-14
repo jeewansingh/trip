@@ -86,6 +86,8 @@ function TripForm() {
       description,
     } = tripData;
 
+    console.log(tripData);
+
     if (
       !title ||
       !destination_id ||
@@ -124,6 +126,7 @@ function TripForm() {
       budget: budget || 0,
       location: destination_id,
       start_date: startDate,
+      interests: JSON.stringify(interests),
       end_date: endDate,
       p_gender: gender,
       is_active: 1, // or set as needed
