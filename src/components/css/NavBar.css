@@ -1,0 +1,49 @@
+.navbar {
+  padding: 20px 150px;
+  border-bottom: 1px solid #300e0e4c;
+}
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  align-items: center;
+}
+.nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--black-color);
+  font-size: 16px;
+}
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.sign-in-button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  color: var(--white-color);
+  padding: 16px 24px;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sign-in-button:hover {
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.nav-profile {
+  cursor: pointer;
+}

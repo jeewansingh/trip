@@ -1,0 +1,157 @@
+.login-form {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  background-color: #0da2b8;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.card-content {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.password-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-password {
+  font-size: 0.75rem;
+  color: #0da2b8;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.form-input {
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #0da2b8;
+  box-shadow: 0 0 0 2px rgba(13, 162, 184, 0.2);
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid #e5e7eb;
+  accent-color: #0da2b8;
+}
+
+.checkbox-label {
+  font-size: 0.875rem;
+}
+
+.submit-button {
+  width: 100%;
+  background-color: #0da2b8;
+  color: white;
+  height: 2.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  transition: background-color 0.15s ease-in-out;
+  border: none;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: rgba(13, 162, 184, 0.9);
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.card-footer {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #e5e7eb;
+}
+
+.signup-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.signup-link {
+  color: #0da2b8;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}

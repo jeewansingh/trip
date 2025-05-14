@@ -1,0 +1,98 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+.login-left {
+  width: calc(50% - 206px);
+  padding: 60px 160px;
+  padding-right: 46px;
+}
+.login-go-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 40px;
+  background-color: var(--white-color);
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  margin-top: 40px;
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.auth-head {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--black-color);
+}
+.auth-desc {
+  font-size: 20px;
+  color: var(--black-color);
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 52px;
+}
+.auth-form-label {
+  font-size: 18px;
+  font-weight: 500;
+}
+.auth-footer {
+  text-align: center;
+  margin-top: 24px;
+}
+.auth-footer a {
+  text-decoration: none;
+}
+.auth-footer a:visited {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+.forgot-password {
+  font-size: 16px;
+  align-self: self-end;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.login-right {
+  background-image: linear-gradient(
+      rgba(13, 162, 184, 0.92),
+      rgba(255, 159, 103, 0.73)
+    ),
+    url("../../images/auth.jpg"); /* adjust path as needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-right h2 {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--white-color);
+}
+.login-right p {
+  font-size: 20px;
+  color: var(--white-color);
+  line-height: 1.5;
+  width: 60%;
+  text-align: center;
+}

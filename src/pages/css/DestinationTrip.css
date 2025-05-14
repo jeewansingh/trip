@@ -1,0 +1,44 @@
+.section-container {
+  padding: 40px 160px;
+  display: flex;
+  justify-content: space-between;
+}
+.create-button {
+  width: 332px;
+}
+.destination-trip-head {
+  flex-direction: column;
+  justify-content: space-between; /* Align to bottom */
+  align-items: flex-start;
+  background-color: var(--primary-color);
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 160px;
+  background-size: cover; /* cover the container */
+  background-position: center; /* center the image */
+  background-repeat: no-repeat;
+}
+
+.destination-trip-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--white-color);
+}
+
+.destination-trip-subtitle {
+  width: 60%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  opacity: 75%;
+  color: var(--white-color);
+  margin-top: 8px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Show only 2 lines */
+  line-clamp: 5; /* Standard property for compatibility */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

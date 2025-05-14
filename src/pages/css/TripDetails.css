@@ -1,0 +1,126 @@
+.trip-details-container {
+}
+.trip-details-head {
+  flex-direction: column;
+  justify-content: space-between; /* Align to bottom */
+  align-items: flex-start;
+  background-color: var(--primary-color);
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 40px 160px;
+}
+
+.trip-details-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--white-color);
+}
+.trip-details-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--white-color);
+}
+.trip-details-content {
+}
+.go-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.trip-details-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.trip-details-created {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.trip-details-created-by {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--white-color);
+}
+
+.trip-details-created-by-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+.trip-details-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  /* align-items: center; */
+  padding: 40px 160px;
+}
+.trip-details-user {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+}
+.trip-details-description {
+  width: 740px;
+  background-color: var(--white-color);
+  padding: 24px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.trip-details {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--black-color);
+}
+.trip-details-description p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black-color);
+  line-height: 1.5;
+}
+
+.trip-info-card {
+  padding-top: 24px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(50% - 24px);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #444;
+}
+
+.label {
+  font-size: 14px;
+}
+
+.value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--black-color);
+}

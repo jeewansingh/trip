@@ -1,0 +1,39 @@
+.destination-section {
+  padding: 0 160px;
+  padding-top: 60px;
+}
+.destination-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  margin-bottom: 30px;
+}
+
+.section-head {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--black-color);
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  font-size: 16px;
+  opacity: 75%;
+  color: var(--black-color);
+}
+
+.view-all-button {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-color);
+  background: none;
+  font-size: 16px;
+}
+
+.destination-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}

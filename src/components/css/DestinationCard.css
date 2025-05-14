@@ -1,0 +1,72 @@
+.destination-card {
+  position: relative;
+  width: 265px;
+  /* height: 341px; */
+  background-color: var(--white-color);
+  border-radius: 8px;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+.destination-image {
+  height: 192px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.destination-info {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.destination-title {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.destination-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+.destination-desc {
+  font-size: 14px;
+  color: var(--black-color);
+  opacity: 75%;
+  line-height: 1.5;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Show only 2 lines */
+  line-clamp: 2; /* Standard property for compatibility */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.destination-cta {
+  border: none;
+  border-radius: 8px;
+  width: 241px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.travel-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(107, 107, 107, 0.9);
+  color: var(--white-color);
+  padding: 8px 8px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 100;
+}
