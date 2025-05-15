@@ -22,7 +22,7 @@ export function NavBarLoggedIn() {
           <Link to="/home">Home</Link>
           <Link to="/trips">Trips</Link>
           <Link to="/destinations">Destinations</Link>
-          <Link to="/about">About</Link>
+          {/* <Link to="/about">About</Link> */}
         </nav>
         <div className="nav-profile" onClick={handleProfileClick}>
           <img src={profile} alt="profile" />

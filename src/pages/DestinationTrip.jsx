@@ -114,6 +114,8 @@ function DestinationTrip() {
               createdBy={trip.createdBy}
               description={trip.description}
               interests={trip.interests}
+              same_creator={trip.same_creator}
+              join_request={trip.join_request}
               userImage={trip.user_image}
             />
           ))

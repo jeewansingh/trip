@@ -1,72 +1,106 @@
-import NavBar from "../components/NavBar";
+import React, { useState, useEffect } from "react";
 import "./css/TripDetails.css";
 import NavBarLoggedIn from "../components/NavBarLoggedIn";
-import TripInfoCard from "../components/TripInfoCard";
 import ProfileCard from "../components/ProfileCard";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
-import location from "../icons/Locationwhite.svg";
+import locationIcon from "../icons/Locationwhite.svg";
 import back from "../icons/chevron-left.svg";
-import userImage from "../images/user.jpg";
 import calendar from "../icons/calendar.svg";
 import clock from "../icons/clock.svg";
 import dollar from "../icons/dollar-circle.svg";
-import user from "../icons/user.svg";
+import userIcon from "../icons/user.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function TripDetails() {
-  const { id } = useParams(); // Tis id will be used to fetch the destination details
-  const loginStatus = 1; // 0 for not logged in, 1 for logged in
+  const { id } = useParams();
+  const [tripDetails, setTripDetails] = useState(null);
+  const [creator, setCreator] = useState(null);
 
-  const tripDetails = {
-    id: 1,
-    name: "Explore Bali",
-    location: "Bali, Indonesia",
-    date: "March 15, 2025",
-    duration: "7 days",
-    budget: "$1,200",
-    createdBy: "John Doe",
-    interests: ["beach", "culture", "food"],
-    description:
-      "Exploring the beaches, temples and local culture of Bali. Looking for laid-back travelers who enjoy d",
-  };
-  const handleJoinClick = () => {
-    toast.success("Join request sent");
+  useEffect(() => {
+    const fetchTripDetails = async () => {
+      const token = localStorage.getItem("token");
+      try {
+        const response = await fetch(
+          "http://localhost/trippartner/other/get_trip_details.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({ trip_id: id, token }),
+          }
+        );
 
-    console.log(tripDetails.date, tripDetails.duration);
-    // You can navigate or trigger action here
+        const data = await response.json();
+        if (data.trip && data.creator) {
+          setTripDetails(data.trip);
+          setCreator(data.creator);
+        } else {
+          toast.error("Trip not found.");
+        }
+      } catch (error) {
+        console.error("Error fetching trip:", error);
+        toast.error("Something went wrong!");
+      }
+    };
+
+    fetchTripDetails();
+  }, [id]);
+
+  const handleJoinClick = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch(
+        "http://localhost/trippartner/other/join_request.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({ trip_id: id, token }),
+        }
+      );
+
+      const data = await response.json();
+      toast.success(data.message);
+
+      // ✅ Update the join_request field locally in tripDetails
+      setTripDetails((prev) => ({
+        ...prev,
+        join_request: 1, // or true if you’re using boolean
+      }));
+    } catch (error) {
+      console.error("Join request error:", error);
+      toast.error("An error occurred. Please try again.");
+    }
   };
+
+  if (!tripDetails || !creator) return <div>Loading...</div>;
+
   return (
     <div>
-      {loginStatus === 1 ? <NavBarLoggedIn /> : <NavBar />}
+      <NavBarLoggedIn />
       <div className="trip-details-container">
         <div className="trip-details-head">
           <div className="go-back" onClick={() => window.history.back()}>
             <img src={back} alt="back" />
-            Back to all tips
+            Back to all trips
           </div>
           <div className="trip-details-header">
             <div>
-              <div className="trip-details-title"> {tripDetails.name}</div>
+              <div className="trip-details-title">{tripDetails.name}</div>
               <div className="trip-details-subtitle">
-                <img src={location} alt="location" />
+                <img src={locationIcon} alt="location" />
                 <div className="trip-details-location-name">
                   {tripDetails.location}
                 </div>
               </div>
             </div>
-            {/* <div className="trip-details-created">
-              <img src={userImage} alt="user" className="trip-details-user" />
-              <div className="trip-details-created-by">
-                <span>Created By</span>
-                <div className="trip-details-created-by-name">
-                  {tripDetails.createdBy}
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
+
         <div className="trip-details-content">
           <div className="trip-details-description">
             <div className="trip-details">Trip Details</div>
@@ -77,6 +111,7 @@ function TripDetails() {
                 <span key={index}>{interest}</span>
               ))}
             </div>
+
             <div className="trip-info-card">
               <div className="info-row">
                 <div className="info-item">
@@ -104,27 +139,34 @@ function TripDetails() {
 
               <div className="info-row">
                 <div className="info-item">
-                  <img src={user} alt="user" />
-                  <span className="label">Gender Preffered</span>
+                  <img src={userIcon} alt="user" />
+                  <span className="label">Gender Preferred</span>
                 </div>
-                <div className="value">Male</div>
+                <div className="value">{tripDetails.p_gender}</div>
               </div>
             </div>
           </div>
 
-          {/* <TripInfoCard
-            date={tripDetails.date}
-            duration={tripDetails.duration}
-            budget={tripDetails.budget}
-            gender="Male"
+          <ProfileCard
             onJoinClick={handleJoinClick}
-          /> */}
-          <ProfileCard onJoinClick={handleJoinClick} userImage={userImage} />
+            same_creator={tripDetails.same_creator}
+            join_request={tripDetails.join_request}
+            userImage={creator.image}
+            name={creator.name}
+            gender={creator.gender}
+            dob={creator.dob}
+            location={creator.location}
+            about={creator.about}
+            interests={creator.interest}
+            budget={creator.budget}
+          />
         </div>
       </div>
+
       <ToastContainer position="top-right" autoClose={3000} />
       <Footer />
     </div>
   );
 }
+
 export default TripDetails;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/NavBar";
 import NavBarLoggedIn from "../components/NavBarLoggedIn";
 import Footer from "../components/Footer";
 import "./css/Destination.css";
@@ -13,8 +12,6 @@ function Destination() {
   const [destinations, setDestinations] = useState([]);
   const [filteredDestinations, setFilteredDestinations] = useState([]);
   const [searchDestination, setSearchDestination] = useState("");
-
-  const loginStatus = 1; // 0 for not logged in, 1 for logged in
 
   useEffect(() => {
     fetch("http://localhost/trippartner/other/get_destination.php")
@@ -37,17 +34,6 @@ function Destination() {
     setFilteredDestinations(filtered);
   };
 
-  // Sample data for destinations
-  // const destinations = [
-  //   {
-  //     id: 1,
-  //     image: destination,
-  //     name: "Bali, Indonesia",
-  //     description:
-  //       "Tropical paradise with beaches, temples and lush landscapes.",
-  //     trips: 12,
-  //   },
-  // ];
   return (
     <div>
       <NavBarLoggedIn />

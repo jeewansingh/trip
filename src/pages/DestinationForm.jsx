@@ -223,7 +223,7 @@ function DestinationForm() {
           </div>
 
           <button type="submit" className="create-trip-button">
-            Create Trip
+            Propose Destination
           </button>
         </form>
       </div>

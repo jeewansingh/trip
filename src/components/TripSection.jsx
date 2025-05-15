@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./css/DestinationSection.css"; //For Title and Section
 import "./css/TripSection.css";
 import TripCard from "./TripCard";
@@ -7,54 +7,27 @@ import user from "../images/user.jpg";
 
 function TripSection() {
   const navigate = useNavigate();
+  const [trips, setTrips] = useState([]); // Ensure trips is always an array
 
   const handleViewAllTripsClick = () => {
     navigate("/trips");
   };
-
-  // Sample data for destinations
-  const trips = [
-    {
-      id: 1,
-      name: "Explore Bali",
-      userImage: user,
-      location: "Bali, Indonesia",
-      date: "March 15, 2025",
-      duration: "7 days",
-      budget: "$1,200",
-      createdBy: "John Doe",
-      interests: ["beach", "culture", "food"],
-      description:
-        "Exploring the beaches, temples and local culture of Bali. Looking for laid-back travelers who enjoy d",
-    },
-    {
-      id: 2,
-      name: "Discover Tokyo",
-      userImage: user,
-      location: "Tokyo, Japan",
-      date: "April 10, 2025",
-      duration: "5 days",
-      budget: "$1,500",
-      createdBy: "Jane Smith",
-      interests: ["technology", "culture", "food"],
-      description:
-        "Experience the vibrant city life, delicious sushi, and historical temples of Tokyo. Ideal for curious travelers.",
-    },
-    {
-      id: 3,
-      name: "Alps Hiking Adventure",
-      userImage: user,
-      location: "Zermatt, Switzerland",
-      date: "June 20, 2025",
-      duration: "10 days",
-      budget: "$2,300",
-      createdBy: "Mike Johnson",
-      interests: ["hiking", "nature", "photography"],
-      description:
-        "Join us for a breathtaking hike through the Swiss Alps. Great for adventurers and nature lovers.",
-    },
-  ];
-  //
+  useEffect(() => {
+    fetch("http://localhost/trippartner/other/trip_section.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({ token: localStorage.getItem("token") }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTrips(data); // Safely set trips if data is valid
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <div className="destination-section">
@@ -75,14 +48,16 @@ function TripSection() {
             key={index}
             id={trip.id}
             name={trip.name}
-            location={trip.location}
+            locationName={trip.location}
             date={trip.date}
             duration={trip.duration}
             budget={trip.budget}
             createdBy={trip.createdBy}
             description={trip.description}
             interests={trip.interests}
-            userImage={trip.userImage}
+            same_creator={trip.same_creator}
+            join_request={trip.join_request}
+            userImage={trip.user_image} // Ensure correct prop
           />
         ))}
       </div>

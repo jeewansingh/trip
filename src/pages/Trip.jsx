@@ -86,26 +86,23 @@ function Trip() {
         {errorMessage ? (
           <div className="error-message">{errorMessage}</div>
         ) : trips && trips.length > 0 ? ( // Make sure trips is not undefined or null
-          trips.map(
-            (trip, index) => (
-              console.log(trip),
-              (
-                <TripCard
-                  key={index}
-                  id={trip.id}
-                  name={trip.name}
-                  locationName={trip.location}
-                  date={trip.date}
-                  duration={trip.duration}
-                  budget={trip.budget}
-                  createdBy={trip.createdBy}
-                  description={trip.description}
-                  interests={trip.interests}
-                  userImage={trip.user_image} // Ensure correct prop
-                />
-              )
-            )
-          )
+          trips.map((trip, index) => (
+            <TripCard
+              key={index}
+              id={trip.id}
+              name={trip.name}
+              locationName={trip.location}
+              date={trip.date}
+              duration={trip.duration}
+              budget={trip.budget}
+              createdBy={trip.createdBy}
+              description={trip.description}
+              interests={trip.interests}
+              same_creator={trip.same_creator}
+              join_request={trip.join_request}
+              userImage={trip.user_image} // Ensure correct prop
+            />
+          ))
         ) : (
           <div className="no-results">
             <img src={search} alt="No results" />

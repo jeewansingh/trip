@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/TripCard.css";
 import location from "../icons/location.svg";
@@ -20,15 +20,53 @@ function TripCard({
   interests,
   userImage,
   locationName,
+  same_creator,
+  join_request: initialJoinRequest,
 }) {
   const navigate = useNavigate();
-
+  const [joinRequest, setJoinRequest] = useState(initialJoinRequest);
   const handleDetailsClick = () => {
     navigate(`/trip-details/${id}`);
   };
 
-  const handleJoinClick = () => {
-    toast.success("Join request sent");
+  const handleJoinClick = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch(
+        "http://localhost/trippartner/other/join_request.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({ trip_id: id, token }), // token included in the body
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          toast.success(data.message);
+          setJoinRequest(1);
+          // setTimeout(() => {
+          //   window.location.reload();
+          // }, 2000); // To avoid error
+        })
+        .catch((err) => {
+          console.error("Error submitting data:", err);
+          toast.error("Something went wrong!");
+        });
+
+      // const data = await response.json();
+
+      // if (response.ok) {
+      //   toast.success("Join request sent");
+      //   setJoinRequest(1);
+      // } else {
+      //   toast.error(data.message || "Failed to send join request");
+      // }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+      console.error("Join request error:", error);
+    }
   };
 
   return (
@@ -68,9 +106,23 @@ function TripCard({
         <button className="trip-card-view" onClick={handleDetailsClick}>
           View Details
         </button>
-        <button className="trip-card-request" onClick={handleJoinClick}>
-          Request to Join
-        </button>
+        {same_creator === 1 ? (
+          <button
+            className="trip-card-request"
+            style={{ background: "white" }}
+            disabled
+          >
+            You created this
+          </button>
+        ) : joinRequest === 1 ? (
+          <button className="trip-card-request" disabled>
+            Request Sent
+          </button>
+        ) : (
+          <button className="trip-card-request" onClick={handleJoinClick}>
+            Request to Join
+          </button>
+        )}
       </div>
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
