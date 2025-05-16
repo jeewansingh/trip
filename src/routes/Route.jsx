@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute"; // Import this component
-
+import PublicRoute from "./PublicRoute";
 import Destination from "../pages/Destination";
 import DestinationTrip from "../pages/DestinationTrip";
 import Home from "../pages/Home";
@@ -9,7 +9,7 @@ import TripDetails from "../pages/TripDetails";
 import TripForm from "../pages/TripForm";
 import DestinationForm from "../pages/DestinationForm";
 import Login from "../pages/Login";
-import SignUp from "../pages/Sinup";
+import SignUp from "../pages/Signup";
 import HeroHome from "../pages/HeroHome";
 
 function RouteComponent() {
@@ -17,8 +17,8 @@ function RouteComponent() {
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<HeroHome />} />
-      <Route path="/signin" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
+      <Route path="/signin" element={<PublicRoute element={Login} />} />
+      <Route path="/signup" element={<PublicRoute element={SignUp} />} />
 
       {/* Protected Routes */}
       <Route path="/home" element={<ProtectedRoute element={Home} />} />

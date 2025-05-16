@@ -11,7 +11,7 @@ function SignUp() {
   };
   return (
     <div className="login-container">
-      <div className="login-left">
+      <div className="signup-left">
         <div className="login-go-back" onClick={handleGoBack}>
           <img src={back} alt="back" />
           Back to Home
@@ -19,14 +19,6 @@ function SignUp() {
         <div className="login-step">
           <CreateAccount />
         </div>
-      </div>
-
-      <div className="login-right">
-        <h2>Start Your Journey Today</h2>
-        <p>
-          Join our community of travelers and find the perfect companions for
-          your next adventure.
-        </p>
       </div>
     </div>
   );

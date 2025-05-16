@@ -9,6 +9,11 @@
   padding: 60px 160px;
   padding-right: 46px;
 }
+.signup-left {
+  width: 100%;
+  padding: 60px 160px;
+  padding-right: 46px;
+}
 .login-go-back {
   display: flex;
   align-items: center;
@@ -95,4 +100,24 @@
   line-height: 1.5;
   width: 60%;
   text-align: center;
+}
+
+.form-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-column {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .form-columns {
+    flex-direction: column;
+  }
 }

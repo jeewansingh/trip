@@ -13,15 +13,15 @@ function TripForm() {
   const [interestsList, setInterestsList] = useState([]);
   const [destinationsList, setDestinationsList] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost/trippartner/other/get_destination_interest.php")
-      .then((res) => res.json())
-      .then((data) => {
-        setDestinationsList(data.destinations);
-        setInterestsList(data.interests);
-      })
-      .catch((err) => console.error("Error fetching data:", err));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost/trippartner/other/get_destination_interest.php")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setDestinationsList(data.destinations);
+  //       setInterestsList(data.interests);
+  //     })
+  //     .catch((err) => console.error("Error fetching data:", err));
+  // }, []);
 
   const { destination_id } = useParams();
 
