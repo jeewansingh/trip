@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import API from "../api/apiurl";
 
 function ProtectedRoute({ element: Component }) {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -13,7 +14,7 @@ function ProtectedRoute({ element: Component }) {
     }
 
     // Check token with backend
-    fetch("http://localhost/trippartner/auth/verify.php", {
+    fetch(API.VERIFY, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({ token }),

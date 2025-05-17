@@ -3,13 +3,14 @@ import "../pages/css/Authentication.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import API from "../api/apiurl";
 
 export default function CreateAccount() {
   const navigate = useNavigate();
   const [interestsList, setInterestsList] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost/trippartner/other/get_destination_interest.php")
+    fetch(API.GET_DESTINATION_INTEREST)
       .then((res) => res.json())
       .then((data) => {
         setInterestsList(data.interests);
@@ -102,13 +103,10 @@ export default function CreateAccount() {
     interests.forEach((id) => data.append("interests[]", id));
 
     try {
-      const response = await fetch(
-        "http://localhost/trippartner/auth/signup.php",
-        {
-          method: "POST",
-          body: data,
-        }
-      );
+      const response = await fetch(API.SIGNUP, {
+        method: "POST",
+        body: data,
+      });
 
       const result = await response.json();
 

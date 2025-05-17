@@ -6,19 +6,21 @@ import "./css/Destination.css";
 import plus from "../icons/plus.svg";
 import search from "../icons/search.svg";
 import TripCard from "../components/TripCard";
+import API from "../api/apiurl";
 
 function Trip() {
   const navigate = useNavigate();
   const [searchTrip, setSearchTrip] = useState("");
   const [trips, setTrips] = useState([]); // Ensure trips is always an array
   const [errorMessage, setErrorMessage] = useState(null);
+  const [hideMyTrips, setHideMyTrips] = useState(false);
 
   useEffect(() => {
     fetchTrips();
   }, []);
 
   const fetchTrips = () => {
-    fetch("http://localhost/trippartner/other/get_trips.php", {
+    fetch(API.GET_TRIPS, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -55,6 +57,10 @@ function Trip() {
     }
   };
 
+  const filteredTrips = hideMyTrips
+    ? trips.filter((trip) => trip.same_creator !== 1)
+    : trips;
+
   return (
     <div>
       <NavBarLoggedIn />
@@ -82,13 +88,22 @@ function Trip() {
           <img src={plus} alt="plus" /> Create New Trip
         </button>
       </div>
+      <div className="hide-toggle">
+        <input
+          type="checkbox"
+          id="hideMyTrips"
+          checked={hideMyTrips}
+          onChange={() => setHideMyTrips(!hideMyTrips)}
+        />
+        <label htmlFor="hideMyTrips">Hide My Created Trips</label>
+      </div>
       <div className="trip-all-cards">
         {errorMessage ? (
           <div className="error-message">{errorMessage}</div>
         ) : trips && trips.length > 0 ? ( // Make sure trips is not undefined or null
-          trips.map((trip, index) => (
+          filteredTrips.map((trip, index) => (
             <TripCard
-              key={index}
+              key={trip.id}
               id={trip.id}
               name={trip.name}
               locationName={trip.location}

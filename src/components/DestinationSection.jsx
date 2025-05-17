@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./css/DestinationSection.css";
 import DestinationCard from "./DestinationCard";
 import { useNavigate } from "react-router-dom";
+import API from "../api/apiurl";
 
 function DestinationSection() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function DestinationSection() {
   };
 
   useEffect(() => {
-    fetch("http://localhost/trippartner/other/destination_section.php")
+    fetch(API.DESTINATION_SECTION)
       .then((res) => res.json())
       .then((data) => {
         setDestinations(data.destinations);

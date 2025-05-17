@@ -19,8 +19,8 @@ function RouteComponent() {
       <Route path="/" element={<HeroHome />} />
       <Route path="/signin" element={<PublicRoute element={Login} />} />
       <Route path="/signup" element={<PublicRoute element={SignUp} />} />
-
-      {/* Protected Routes */}
+      UserProfile
+      <Route path="/home" element={<ProtectedRoute element={Home} />} />
       <Route path="/home" element={<ProtectedRoute element={Home} />} />
       <Route
         path="/destinations"

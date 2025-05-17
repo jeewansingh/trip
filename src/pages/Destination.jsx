@@ -6,6 +6,7 @@ import "./css/Destination.css";
 import plus from "../icons/plus.svg";
 import DestinationCard from "../components/DestinationCard";
 import search from "../icons/search.svg";
+import API from "../api/apiurl";
 
 function Destination() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function Destination() {
   const [searchDestination, setSearchDestination] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost/trippartner/other/get_destination.php")
+    fetch(API.GET_DESTINATION)
       .then((res) => res.json())
       .then((data) => {
         setDestinations(data.destinations);

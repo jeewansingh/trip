@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "../components/NavBar";
+import API from "../api/apiurl";
+
 import Footer from "../components/Footer";
 import NavBarLoggedIn from "../components/NavBarLoggedIn";
 import back from "../icons/chevron-left-black.svg";
@@ -77,7 +78,7 @@ function DestinationForm() {
       submitData.append("image", image);
     }
 
-    fetch("http://localhost/trippartner/other/create_destination.php", {
+    fetch(API.CREATE_DESTINATION, {
       method: "POST",
 
       body: submitData,

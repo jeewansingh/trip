@@ -3,6 +3,7 @@ import "../pages/css/Authentication.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import API from "../api/apiurl";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -28,17 +29,14 @@ export default function SignIn() {
     }
 
     try {
-      const response = await fetch(
-        "http://localhost/trippartner/auth/login.php",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams({
-            email: formData.email,
-            password: formData.password,
-          }),
-        }
-      );
+      const response = await fetch(API.LOGIN, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
 
       const data = await response.json();
 

@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import "./css/TripForm.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API from "../api/apiurl";
 
 function TripForm() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ function TripForm() {
   });
 
   useEffect(() => {
-    fetch("http://localhost/trippartner/other/get_destination_interest.php")
+    fetch(API.GET_DESTINATION_INTEREST)
       .then((res) => res.json())
       .then((data) => {
         setDestinationsList(data.destinations);
@@ -133,7 +134,7 @@ function TripForm() {
     };
 
     // Send the data to the backend
-    fetch("http://localhost/trippartner/other/create_trip.php", {
+    fetch(API.CREATE_TRIP, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",

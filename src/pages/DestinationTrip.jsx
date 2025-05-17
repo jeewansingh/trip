@@ -8,8 +8,8 @@ import "./css/DestinationTrip.css";
 import plus from "../icons/plus.svg";
 import search from "../icons/search.svg";
 import TripCard from "../components/TripCard";
-import destination from "../images/destination.png";
 import back from "../icons/chevron-left.svg";
+import API from "../api/apiurl";
 
 function DestinationTrip() {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ function DestinationTrip() {
   }, []);
 
   const fetchDestinationDetails = () => {
-    fetch("http://localhost/trippartner/other/get_destination_by_id.php", {
+    fetch(API.GET_DESTINATION_BY_ID, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",

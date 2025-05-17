@@ -3,7 +3,7 @@ import "./css/DestinationSection.css"; //For Title and Section
 import "./css/TripSection.css";
 import TripCard from "./TripCard";
 import { useNavigate } from "react-router-dom";
-import user from "../images/user.jpg";
+import API from "../api/apiurl";
 
 function TripSection() {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ function TripSection() {
     navigate("/trips");
   };
   useEffect(() => {
-    fetch("http://localhost/trippartner/other/trip_section.php", {
+    fetch(API.TRIP_SECTION, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",

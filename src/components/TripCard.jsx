@@ -8,6 +8,7 @@ import dollar from "../icons/dollar-circle.svg";
 import calendar from "../icons/calendar.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API from "../api/apiurl";
 
 function TripCard({
   id,
@@ -32,16 +33,13 @@ function TripCard({
   const handleJoinClick = async () => {
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch(
-        "http://localhost/trippartner/other/join_request.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams({ trip_id: id, token }), // token included in the body
-        }
-      )
+      const response = await fetch(API.JOIN_REQUEST, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({ trip_id: id, token }), // token included in the body
+      })
         .then((res) => res.json())
         .then((data) => {
           toast.success(data.message);
