@@ -27,8 +27,11 @@ export default function ProfileCard({
       <div className="user-details">
         <img className="user-details-image" src={userImage} alt="User" />
         <div className="user-details-name">{name}</div>
+        {/* <div className="user-details-age">
+          {calculateAge(dob)},{gender}
+        </div> */}
         <div className="user-details-age">
-          {calculateAge(dob)}, {gender}
+          {dob}, {gender}
         </div>
 
         <div className="user-details-about">{about}</div>

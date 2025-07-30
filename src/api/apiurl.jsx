@@ -13,6 +13,7 @@ const API = {
   GET_DESTINATION_INTEREST: `${BASE_URL}/other/get_destination_interest.php`,
   DESTINATION_SECTION: `${BASE_URL}/other/destination_section.php`,
   TRIP_SECTION: `${BASE_URL}/other/trip_section.php`,
+  GET_TRIP_DETAILS: `${BASE_URL}/other/get_trip_details.php`,
 };
 
 export default API;

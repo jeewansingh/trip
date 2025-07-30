@@ -1,0 +1,270 @@
+.profile-container {
+  display: flex;
+  min-height: 87vh;
+}
+
+.sidebar {
+  /* height: 87vh; */
+  width: 220px;
+  background-color: var(--background-color);
+  /* border-right: 1px solid #ddd; */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar-menu li {
+  padding: 12px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-menu li:hover {
+  background-color: var(--primary-color);
+}
+
+.sidebar-menu .active {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.logout-button {
+  margin-top: auto;
+  padding: 10px;
+  border: none;
+  background-color: #ff4d4f;
+  color: var(--white-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #d9363e;
+}
+
+.profile-content {
+  flex-grow: 1;
+  padding: 40px;
+}
+.about-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+.profile-name {
+  margin-top: 10px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 30px;
+}
+
+.profile-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-row input,
+.profile-row select,
+.profile-row textarea,
+.profile-name input {
+  background-color: var(--white-color);
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #00000077;
+  border-radius: 12px;
+  outline: none;
+}
+
+.profile-row label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.interest-tag {
+  background-color: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.profile-actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.edit-btn,
+.cancel-btn,
+.save-btn {
+  padding: 8px 16px;
+  margin: 0 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background-color: #4caf50;
+  font-size: 16px;
+  padding: 12px 20px;
+  color: white;
+}
+
+.cancel-btn {
+  font-size: 16px;
+  padding: 12px 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.edit-btn {
+  font-size: 16px;
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  font-family: inherit;
+  color: white;
+}
+.interest-tags .tag {
+  display: inline-block;
+  margin: 5px;
+  padding: 6px 12px;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.interest-tags .tag.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.interests .interest-tag {
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 10px;
+  background-color: #f5f5f5;
+  border-radius: 16px;
+}
+
+.created-trips-section {
+  margin: 30px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.created-trips-section h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.created-trips-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fafbfc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.created-trips-table th,
+.created-trips-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eaeaea;
+  text-align: left;
+}
+
+.created-trips-table th {
+  background: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+}
+
+.created-trips-table tr:last-child td {
+  border-bottom: none;
+}
+
+.created-trips-table button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.created-trips-table button:hover {
+  background: #0056b3;
+}
+
+.created-trips-table button[style*='color: red'] {
+  background: #f44336;
+  color: #fff;
+}
+
+.created-trips-table button[style*='color: red']:hover {
+  background: #c62828;
+}
+
+.status-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  background: #e0e0e0;
+  color: #333;
+  font-weight: 500;
+}
+.status-pending {
+  background: #ff9800 !important;
+  color: #fff !important;
+  border-radius: 16px;
+}

@@ -11,6 +11,10 @@ import DestinationForm from "../pages/DestinationForm";
 import Login from "../pages/Login";
 import SignUp from "../pages/Signup";
 import HeroHome from "../pages/HeroHome";
+import Profile from "../pages/Profile";
+import AdminLogin from "../admin/AdminLogin";
+import AdminProtectedRoute from "./AdminProtectedRoute";
+import AdminDashboard from "../admin/AdminDashboard";
 
 function RouteComponent() {
   return (
@@ -19,14 +23,18 @@ function RouteComponent() {
       <Route path="/" element={<HeroHome />} />
       <Route path="/signin" element={<PublicRoute element={Login} />} />
       <Route path="/signup" element={<PublicRoute element={SignUp} />} />
-      UserProfile
+      <Route path="/admin_login" element={<AdminLogin />} />
+      <Route path="/admin_dashboard" element={<AdminProtectedRoute element={AdminDashboard} />} />
+
+      {/* Protected Routes */}
       <Route path="/home" element={<ProtectedRoute element={Home} />} />
-      <Route path="/home" element={<ProtectedRoute element={Home} />} />
+
       <Route
         path="/destinations"
         element={<ProtectedRoute element={Destination} />}
       />
       <Route path="/trips" element={<ProtectedRoute element={Trip} />} />
+      <Route path="/profile" element={<ProtectedRoute element={Profile} />} />
       <Route
         path="/destination-trip/"
         element={<ProtectedRoute element={Destination} />}

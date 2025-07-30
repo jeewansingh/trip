@@ -1,69 +1,85 @@
 import React, { useState } from "react";
+import NavBarLoggedIn from "../components/NavBarLoggedIn";
+import AboutSection from "../components/AboutSection";
+import CreatedTripSection from "../components/CreatedTripSection";
+import InvitationSent from "../components/InvitationSent";
+import InvitationReceived from "../components/InvitatonReceived";
+import InvitationAccepted from "../components/InvitationAccepted";
+import "./css/UserProfile.css";
 
-const UserProfile = () => {
-  const [activeTab, setActiveTab] = useState("sent"); // Default tab
+const Profile = () => {
+  const [activeTab, setActiveTab] = useState("about");
 
-  const renderTabContent = () => {
+  const renderContent = () => {
     switch (activeTab) {
+      case "about":
+        return <AboutSection />;
+      case "created":
+        return <CreatedTripSection/>;
       case "sent":
-        return <SentInvitations />;
+        return <InvitationSent/>;
       case "received":
-        return <ReceivedInvitations />;
-      case "accepted":
-        return <AcceptedInvitations />;
+        return <InvitationReceived/>;
+        case "accepted":
+        return <InvitationAccepted/>;
       default:
-        return <div>Select a tab</div>;
+        return null;
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // or whatever key you use for auth
+    window.location.href = "/signin"; // redirect to login or homepage
+
+    alert("Logged out!");
+  };
+
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">User Profile</h2>
-
-      {/* Tabs */}
-      <div className="flex gap-4 border-b mb-4">
-        <Tab
-          label="Sent"
-          value="sent"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-        <Tab
-          label="Received"
-          value="received"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-        <Tab
-          label="Accepted"
-          value="accepted"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
+    <div>
+      <NavBarLoggedIn />
+      <div className="profile-container">
+        <aside className="sidebar">
+          <div className="sidebar-header">My Profile</div>
+          <ul className="sidebar-menu">
+            <li
+              className={activeTab === "about" ? "active" : ""}
+              onClick={() => setActiveTab("about")}
+            >
+              About
+            </li>
+            <li
+              className={activeTab === "created" ? "active" : ""}
+              onClick={() => setActiveTab("created")}
+            >
+              Created Trips
+            </li>
+            <li
+              className={activeTab === "sent" ? "active" : ""}
+              onClick={() => setActiveTab("sent")}
+            >
+              Sent Invitations
+            </li>
+            <li
+              className={activeTab === "received" ? "active" : ""}
+              onClick={() => setActiveTab("received")}
+            >
+              Received Invitations
+            </li>
+            <li
+              className={activeTab === "accepted" ? "active" : ""}
+              onClick={() => setActiveTab("accepted")}
+            >
+              Accepted Invitations
+            </li>
+          </ul>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </aside>
+        <main className="profile-content">{renderContent()}</main>
       </div>
-
-      {/* Content */}
-      <div>{renderTabContent()}</div>
     </div>
-  );
+  );   
 };
 
-const Tab = ({ label, value, activeTab, setActiveTab }) => (
-  <button
-    className={`py-2 px-4 border-b-2 ${
-      activeTab === value
-        ? "border-blue-500 font-semibold"
-        : "border-transparent text-gray-500"
-    }`}
-    onClick={() => setActiveTab(value)}
-  >
-    {label}
-  </button>
-);
-
-// Dummy components (replace with actual components)
-const SentInvitations = () => <div>📤 Sent Invitations</div>;
-const ReceivedInvitations = () => <div>📥 Received Invitations</div>;
-const AcceptedInvitations = () => <div>✅ Accepted Invitations</div>;
-
-export default UserProfile;
+export default Profile;

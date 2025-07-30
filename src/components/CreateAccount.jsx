@@ -80,6 +80,12 @@ export default function CreateAccount() {
       return;
     }
 
+    // Name validation: only letters, at least 3
+    if (!/^[A-Za-z ]{3,}$/.test(name)) {
+      toast.error("Name must be at least 3 letters and contain only letters");
+      return;
+    }
+
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
       return;

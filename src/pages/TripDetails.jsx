@@ -12,6 +12,7 @@ import dollar from "../icons/dollar-circle.svg";
 import userIcon from "../icons/user.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API from "../api/apiurl";
 
 function TripDetails() {
   const { id } = useParams();
@@ -22,16 +23,13 @@ function TripDetails() {
     const fetchTripDetails = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await fetch(
-          "http://localhost/trippartner/other/get_trip_details.php",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: new URLSearchParams({ trip_id: id, token }),
-          }
-        );
+        const response = await fetch(API.GET_TRIP_DETAILS, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({ trip_id: id, token }),
+        });
 
         const data = await response.json();
         if (data.trip && data.creator) {
